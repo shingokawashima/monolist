@@ -5,13 +5,19 @@
         <div class="image">
           <div class="img-wrap">
             <% #TODO 商品画像 %>
-            <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
+            
+            <% if item.get("LargeImage/URL") != nil %>
+              <img src="<%= item.get("LargeImage/URL") %>">
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
+            <% end %>
+            
           </div>
         </div>
         <div class="detail">
           <p class="title">
             <% #TODO 商品タイトル %>
-            仮タイトル
+            <p><%= item.get("ItemAttributes/Title") %></p>
           </p>
         </div>
         <div class="action clearfix">

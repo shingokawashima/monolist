@@ -49,5 +49,11 @@ class OwnershipsController < ApplicationController
     # params[:type]の値ににHavedボタンが押された時には「Have」,
     # Wantedボタンがされた時には「Want」が設定されています。
 
+    if @item.type == "Haved"
+      current_user.unhave(@item)
+    elsif @item.type == "Wanted"
+      current_user.unwant(@item)
+    end
+
   end
 end

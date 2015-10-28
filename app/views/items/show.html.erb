@@ -1,5 +1,7 @@
-<% content_for :title do %>
- <%= @item.title %>
+<% content_for :head do %>
+  <title><%= @item.title %></title>
+  <meta name="description" content="<%= @item.title %>に関する情報です。この商品を欲しい人、持ってる人を表示しています。">
+  <meta name="keywords" content="Monolist,<%= "#{@item.title}"%>">
 <% end %>
 
 <div class="container">
@@ -9,10 +11,10 @@
         <div class="img-wrap">
           <% #TODO 商品イメージ %>
           
-            <% if @item.large_image != nil %>
+            <% if @item.large_image.present? %>
               <img src= <%= @item.large_image %>>
             <% else %>
-              <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
+              <%= image_tag("no-image.png") %>
             <% end %>
             
         </div>

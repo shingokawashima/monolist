@@ -46,22 +46,22 @@ class User < ActiveRecord::Base
   
   # アイテムをwantしているかどうか確認
   def want?(item)
-    want_items.include?(item.id)
+    want_items.include?(item)
   end
   
   # アイテムをhaveしているかどうか確認
   def have?(item)
-    have_items.include?(item.id)
+    have_items.include?(item)
   end
 
   # wantしているユーザーをunwantする
   def unwant(item)
-    wants.find_by(want_id: item.id).destroy
+    wants.find_by(item_id: item.id).destroy
   end
 
   # haveしているユーザーをunwantする
   def unhave(item)
-    haves.find_by(have_id: item.id).destroy
+    haves.find_by(item_id: item.id).destroy
   end
 
 
